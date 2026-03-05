@@ -5,69 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0056b3">
     <title>Óptica Alianza Visual - Bajo Cauca</title>
-    
-    <link rel="stylesheet" href="style.css?v=1.2">
+    <link rel="stylesheet" href="style.css?v=2.0">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="app-container">
         <header>
-            <img src="./opticaalianzavisual.PNG" alt="Logo Óptica Alianza Visual" class="logo">
+            <div class="logo-box">
+                <img src="./opticaaliazavisual.PNG" alt="Logo Óptica Alianza Visual" class="logo-img">
+            </div>
             <h1>Óptica Alianza Visual</h1>
             <p>Bajo Cauca - Caucasia</p>
         </header>
 
         <section class="services-section">
             <h3>Nuestros Servicios</h3>
-            <div class="services-wrapper">
-                <button class="nav-btn left" type="button"><i class="fas fa-chevron-left"></i></button>
-                <div class="services-container" id="servicesContainer">
+            <div class="carousel-wrapper">
+                <button class="nav-btn" id="prevBtn" type="button"><i class="fas fa-chevron-left"></i></button>
+                <div class="services-scroll" id="servicesContainer">
                     <div class="service-card" onclick="selectService('Examen de la Vista')">Examen de la Vista</div>
                     <div class="service-card" onclick="selectService('Lentes Formulados')">Lentes Formulados</div>
                     <div class="service-card" onclick="selectService('Monturas de Marca')">Monturas de Marca</div>
                     <div class="service-card" onclick="selectService('Lentes de Contacto')">Lentes de Contacto</div>
                     <div class="service-card" onclick="selectService('Reparación de Gafas')">Reparación de Gafas</div>
-                    <div class="service-card" onclick="selectService('Accesorios Ópticos')">Accesorios</div>
-                    <div class="service-card" onclick="selectService('Protección Blue Lite')">Filtro Blue Lite</div>
+                    <div class="service-card" onclick="selectService('Accesorios')">Accesorios</div>
+                    <div class="service-card" onclick="selectService('Filtro Blue Lite')">Filtro Blue Lite</div>
                 </div>
-                <button class="nav-btn right" type="button"><i class="fas fa-chevron-right"></i></button>
+                <button class="nav-btn" id="nextBtn" type="button"><i class="fas fa-chevron-right"></i></button>
             </div>
             <input type="hidden" id="selectedService">
         </section>
 
         <form id="orderForm">
-            <div class="input-group">
-                <input type="text" id="nombre" placeholder="Nombre Completo" required>
-                <input type="tel" id="celular" placeholder="Celular" required>
-                <input type="text" id="direccion" placeholder="Dirección de residencia" required>
-                
-                <button type="button" onclick="getGeo()" class="geo-btn">
-                    Verificar Ubicación <i class="fas fa-map-marker-alt"></i>
-                </button>
-                <p id="geoStatus" style="font-size: 0.8em; text-align: center; margin-top: 5px;"></p>
-                
-                <textarea id="observaciones" placeholder="Observaciones adicionales..."></textarea>
-            </div>
+            <input type="text" id="nombre" placeholder="Nombre Completo" required>
+            <input type="tel" id="celular" placeholder="Celular" required>
+            <input type="text" id="direccion" placeholder="Dirección de residencia" required>
+            
+            <button type="button" onclick="getGeo()" class="geo-btn">
+                Verificar Ubicación <i class="fas fa-map-marker-alt"></i>
+            </button>
+            <p id="geoStatus"></p>
+            
+            <textarea id="observaciones" placeholder="Observaciones adicionales..."></textarea>
 
-            <div class="action-buttons">
-                <button type="submit" class="send-btn">Enviar a WhatsApp <i class="fab fa-whatsapp"></i></button>
-                <button type="button" onclick="editData()" class="edit-btn">Editar Datos</button>
-            </div>
+            <button type="submit" class="send-btn">Enviar a WhatsApp <i class="fab fa-whatsapp"></i></button>
+            <button type="button" onclick="editData()" class="edit-btn">Editar Datos</button>
         </form>
 
-        <div class="catalog-link">
-            <a href="catalogoopticaalianzavisual.pdf" target="_blank">Ver Catálogo Completo (PDF)</a>
-        </div>
-
-        <footer>
+        <div class="footer-links">
+            <a href="catalogoopticaalianzavisual.pdf" target="_blank" class="pdf-link">Ver Catálogo Completo (PDF)</a>
             <p>Calle 20 #14 - 15 Avenida Pajonal, Caucasia</p>
             <p id="dateTime"></p>
-            <hr style="border: 0.5px solid rgba(255,255,255,0.2); width: 50%; margin: 10px auto;">
-            <p class="credits">Desarrollado por <b>Vibras Positivas</b> &copy; 2026</p>
-        </footer>
+            <p class="credits">Desarrollado por <b>Vibras Positivas</b> © 2026</p>
+        </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
