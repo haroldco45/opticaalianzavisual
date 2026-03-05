@@ -2,69 +2,100 @@
     --primary: #0056b3;
     --secondary: #00a8cc;
     --accent: #25d366;
-    --light: #f4f7f6;
+    --dark-bg: rgba(0, 0, 0, 0.75);
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     margin: 0;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('https://images.unsplash.com/photo-1574258495973-f010dfbb5371?q=80&w=1000') no-repeat center center fixed;
+    /* Fondo con imagen fija y capa oscura para que el texto resalte */
+    background: linear-gradient(var(--dark-bg), var(--dark-bg)), 
+                url('https://images.unsplash.com/photo-1574258495973-f010dfbb5371?q=80&w=1000');
     background-size: cover;
+    background-attachment: fixed;
     color: white;
     display: flex;
     justify-content: center;
+    padding: 10px;
 }
 
 .app-container {
     width: 100%;
-    max-width: 500px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
     padding: 20px;
-    min-height: 100vh;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 header { text-align: center; margin-bottom: 20px; }
-.logo { width: 120px; border-radius: 50%; border: 3px solid white; }
+.logo { width: 90px; height: 90px; border-radius: 50%; border: 2px solid white; object-fit: cover; }
 
-/* Selector de Servicios */
-.services-wrapper { display: flex; align-items: center; position: relative; margin: 15px 0; }
+/* Selector de Servicios mejorado */
+.services-wrapper { 
+    display: flex; 
+    align-items: center; 
+    background: rgba(0,0,0,0.3);
+    border-radius: 15px;
+    margin: 15px 0;
+}
 .services-container {
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
     gap: 10px;
-    padding: 10px;
+    padding: 15px;
+    scrollbar-width: none; /* Oculta scroll en Firefox */
 }
-.services-container::-webkit-scrollbar { display: none; }
+.services-container::-webkit-scrollbar { display: none; } /* Oculta scroll en Chrome/Safari */
+
 .service-card {
-    min-width: 150px;
+    min-width: 130px;
     background: white;
     color: var(--primary);
-    padding: 15px;
-    border-radius: 12px;
+    padding: 12px;
+    border-radius: 10px;
     text-align: center;
+    font-size: 0.9em;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
 }
-.service-card.active { background: var(--secondary); color: white; transform: scale(1.05); }
+.service-card.active { background: var(--secondary); color: white; }
 
-/* Formulario */
-.input-group input, .input-group textarea {
+/* Botones de navegación */
+.nav-btn { background: none; border: none; color: white; font-size: 1.2em; cursor: pointer; padding: 10px; }
+
+/* Inputs */
+input, textarea {
     width: 100%;
     padding: 12px;
     margin: 8px 0;
-    border-radius: 8px;
+    border-radius: 10px;
     border: none;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 16px; /* Evita zoom automático en iPhone */
     box-sizing: border-box;
 }
 
-.send-btn { background: var(--accent); color: white; width: 100%; padding: 15px; border: none; border-radius: 8px; font-weight: bold; font-size: 1.1em; cursor: pointer; }
-.edit-btn { background: #6c757d; color: white; width: 100%; margin-top: 10px; border: none; padding: 10px; border-radius: 8px; cursor: pointer; }
+.geo-btn { background: #555; color: white; border: none; padding: 10px; width: 100%; border-radius: 10px; cursor: pointer; }
+
+.send-btn { 
+    background: var(--accent); 
+    color: white; 
+    width: 100%; 
+    padding: 15px; 
+    border: none; 
+    border-radius: 12px; 
+    font-weight: bold; 
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.edit-btn { background: transparent; color: #ddd; border: 1px solid #ddd; width: 100%; margin-top: 10px; padding: 8px; border-radius: 10px; }
 
 .catalog-link { text-align: center; margin-top: 25px; }
-.catalog-link a { color: #00ffcc; text-decoration: none; font-weight: bold; }
+.catalog-link a { color: #00ffcc; text-decoration: none; font-weight: bold; font-size: 1.1em; }
 
-footer { text-align: center; font-size: 0.8em; margin-top: 30px; opacity: 0.8; }
+footer { text-align: center; font-size: 0.75em; margin-top: 30px; line-height: 1.6; }
