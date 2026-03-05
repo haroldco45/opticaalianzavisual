@@ -1,43 +1,46 @@
-// Reloj Colombia
+// Reloj Tiempo Real
 setInterval(() => {
     const options = { timeZone: 'America/Bogota', hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit', day: '2-digit', month: '2-digit', year: 'numeric' };
-    document.getElementById('dateTime').innerText = new Date().toLocaleString('es-CO', options);
+    const dateStr = new Date().toLocaleString('es-CO', options);
+    document.getElementById('dateTime').innerText = dateStr;
 }, 1000);
 
-// Selección de Servicio
+// Selección de Servicios
 function selectService(service) {
-    document.querySelectorAll('.service-card').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.service-card').forEach(card => card.classList.remove('active'));
     event.currentTarget.classList.add('active');
     document.getElementById('selectedService').value = service;
 }
 
-// Ubicación
-let coords = "No proporcionada";
+// Geolocalización
+let coords = "No verificada";
 function getGeo() {
     const status = document.getElementById('geoStatus');
     status.innerText = "Localizando...";
     navigator.geolocation.getCurrentPosition(
-        p => {
+        (p) => {
             coords = `https://www.google.com/maps?q=${p.coords.latitude},${p.coords.longitude}`;
-            status.innerText = "✅ Ubicación lista";
+            status.innerText = "✅ Ubicación obtenication";
         },
-        () => status.innerText = "❌ Error al ubicar"
+        () => { status.innerText = "❌ Error al ubicar"; }
     );
 }
 
-// Enviar WhatsApp
-document.getElementById('orderForm').onsubmit = e => {
+// WhatsApp
+document.getElementById('orderForm').onsubmit = function(e) {
     e.preventDefault();
     const service = document.getElementById('selectedService').value;
-    if(!service) return alert("Selecciona un servicio");
+    if(!service) return alert("Por favor selecciona un servicio.");
 
+    const nombre = document.getElementById('nombre').value;
     const msg = `*ÓPTICA ALIANZA VISUAL*%0A` +
                 `*Servicio:* ${service}%0A` +
-                `*Nombre:* ${document.getElementById('nombre').value}%0A` +
+                `*Cliente:* ${nombre}%0A` +
                 `*Ubicación:* ${coords}`;
+    
     window.open(`https://wa.me/573053414288?text=${msg}`, '_blank');
 };
 
-// Flechas
-document.querySelector('.right').onclick = () => document.getElementById('servicesContainer').scrollBy(120, 0);
-document.querySelector('.left').onclick = () => document.getElementById('servicesContainer').scrollBy(-120, 0);
+// Navegación Carrusel
+document.getElementById('nextBtn').onclick = () => document.getElementById('servicesContainer').scrollBy(150, 0);
+document.getElementById('prevBtn').onclick = () => document.getElementById('servicesContainer').scrollBy(-150, 0);
