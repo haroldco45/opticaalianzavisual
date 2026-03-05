@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0056b3">
     <title>Óptica Alianza Visual - Bajo Cauca</title>
+    
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -19,7 +21,7 @@
         <section class="services-section">
             <h3>Nuestros Servicios</h3>
             <div class="services-wrapper">
-                <button class="nav-btn left"><i class="fas fa-chevron-left"></i></button>
+                <button class="nav-btn left" type="button"><i class="fas fa-chevron-left"></i></button>
                 <div class="services-container" id="servicesContainer">
                     <div class="service-card" onclick="selectService('Examen de la Vista')">Examen de la Vista</div>
                     <div class="service-card" onclick="selectService('Lentes Formulados')">Lentes Formulados</div>
@@ -29,7 +31,7 @@
                     <div class="service-card" onclick="selectService('Accesorios Ópticos')">Accesorios</div>
                     <div class="service-card" onclick="selectService('Protección Blue Lite')">Filtro Blue Lite</div>
                 </div>
-                <button class="nav-btn right"><i class="fas fa-chevron-right"></i></button>
+                <button class="nav-btn right" type="button"><i class="fas fa-chevron-right"></i></button>
             </div>
             <input type="hidden" id="selectedService">
         </section>
@@ -39,8 +41,12 @@
                 <input type="text" id="nombre" placeholder="Nombre Completo" required>
                 <input type="tel" id="celular" placeholder="Celular" required>
                 <input type="text" id="direccion" placeholder="Dirección de residencia" required>
-                <button type="button" onclick="getGeo()" class="geo-btn">Verificar Ubicación <i class="fas fa-map-marker-alt"></i></button>
-                <p id="geoStatus"></p>
+                
+                <button type="button" onclick="getGeo()" class="geo-btn">
+                    Verificar Ubicación <i class="fas fa-map-marker-alt"></i>
+                </button>
+                <p id="geoStatus" style="font-size: 0.8em; text-align: center; margin-top: 5px;"></p>
+                
                 <textarea id="observaciones" placeholder="Observaciones adicionales..."></textarea>
             </div>
 
@@ -57,9 +63,11 @@
         <footer>
             <p>Calle 20 #14 - 15 Avenida Pajonal, Caucasia</p>
             <p id="dateTime"></p>
-            <p class="credits">Desarrollado por **Vibras Positivas** &copy; 2026</p>
+            <hr style="border: 0.5px solid rgba(255,255,255,0.2); width: 50%; margin: 10px auto;">
+            <p class="credits">Desarrollado por <b>Vibras Positivas</b> &copy; 2026</p>
         </footer>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
