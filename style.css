@@ -1,85 +1,104 @@
 :root {
-    --azul: #0056b3;
-    --verde: #25d366;
-    --fondo-oscuro: rgba(35, 35, 35, 0.95);
+    --blue: #0056b3;
+    --green: #25d366;
+    --dark: rgba(30, 30, 30, 0.95);
 }
 
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
-    margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                url('https://images.unsplash.com/photo-1574258495973-f010dfbb5371?q=80&w=1000');
+    background: #1a1a1a;
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                      url('https://images.unsplash.com/photo-1574258495973-f010dfbb5371?q=80&w=1000');
     background-size: cover;
     background-position: center;
-    background-attachment: scroll;
+    color: white;
     display: flex;
     justify-content: center;
-    padding: 20px 10px;
     min-height: 100vh;
-    color: white;
+    padding: 15px;
 }
 
 .app-container {
     width: 100%;
     max-width: 420px;
-    background: var(--fondo-oscuro);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
+    background: var(--dark);
+    border-radius: 25px;
     padding: 25px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
-.logo {
-    width: 220px;
-    height: auto;
+/* Logo Rectangular */
+.logo-box {
     background: white;
     padding: 10px;
-    border-radius: 10px;
-    border: 2px solid var(--azul);
+    border-radius: 12px;
     margin-bottom: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.logo-img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
 }
 
-/* Carrusel de servicios */
-.services-container {
+header { text-align: center; margin-bottom: 25px; }
+
+/* Carrusel Mejorado */
+.carousel-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+.services-scroll {
     display: flex;
     overflow-x: auto;
-    gap: 10px;
+    gap: 12px;
     padding: 10px 0;
     scrollbar-width: none;
 }
-.services-container::-webkit-scrollbar { display: none; }
+.services-scroll::-webkit-scrollbar { display: none; }
 
 .service-card {
     min-width: 140px;
     background: white;
-    color: var(--azul);
-    padding: 12px;
-    border-radius: 10px;
+    color: var(--blue);
+    padding: 15px 10px;
+    border-radius: 12px;
     text-align: center;
     font-weight: bold;
+    font-size: 0.9rem;
     cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
-.service-card.active {
-    background: var(--azul);
-    color: white;
-    border: 2px solid var(--verde);
-}
+.service-card.active { background: var(--blue); color: white; border: 2px solid var(--green); }
 
-.nav-btn { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+.nav-btn { background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer; }
 
-/* Botón WhatsApp */
-.send-btn {
-    background: var(--verde);
-    color: white;
+/* Formulario Limpio */
+input, textarea {
     width: 100%;
-    padding: 15px;
+    padding: 14px;
+    margin: 8px 0;
+    border-radius: 10px;
     border: none;
-    border-radius: 12px;
-    font-weight: bold;
-    font-size: 1.1rem;
-    cursor: pointer;
-    margin-top: 15px;
+    font-size: 1rem;
 }
+
+.geo-btn { background: #444; color: white; border: 1px solid #666; padding: 10px; width: 100%; border-radius: 10px; cursor: pointer; }
+
+.send-btn { 
+    background: var(--green); color: white; width: 100%; padding: 18px; 
+    border: none; border-radius: 15px; font-weight: bold; font-size: 1.1rem; margin-top: 15px; cursor: pointer;
+}
+
+.edit-btn { background: transparent; color: #888; border: 1px solid #444; width: 100%; margin-top: 10px; padding: 8px; border-radius: 10px; }
+
+.footer-links { text-align: center; margin-top: 25px; font-size: 0.8rem; opacity: 0.7; }
+.pdf-link { color: #00ffcc; text-decoration: none; font-weight: bold; display: block; margin-bottom: 15px; font-size: 1rem; }
