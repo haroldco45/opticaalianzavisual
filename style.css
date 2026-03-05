@@ -1,6 +1,8 @@
+/* 1. Variables Globales y Reset */
 :root {
     --primary: #0056b3;
     --accent: #25d366;
+    --glass-bg: rgba(40, 40, 40, 0.75);
 }
 
 body {
@@ -13,73 +15,101 @@ body {
     background-attachment: fixed;
     color: white;
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Centra la app en PC */
     padding: 15px;
+    min-height: 100vh;
 }
 
+/* 2. Contenedor Principal Responsivo */
 .app-container {
-    width: 100%;
-    max-width: 400px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    width: 100%;            /* Ocupa el ancho en móviles */
+    max-width: 450px;       /* No se estira demasiado en computadoras */
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border-radius: 25px;
+    padding: 30px 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
     border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;    /* Centra todo el contenido internamente */
 }
 
-header { text-align: center; margin-bottom: 20px; }
-/* Ajuste para que el logo se vea circular y no se estire */
-.logo { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid white; }
+/* 3. Encabezado y Logo Circular */
+header { 
+    text-align: center; 
+    margin-bottom: 25px;
+    width: 100%;
+}
 
-h1 { font-size: 1.4rem; margin: 10px 0 0; }
+.logo { 
+    width: 110px;           /* Tamaño fijo para mantener proporciones */
+    height: 110px; 
+    border-radius: 50%;     /* Lo hace circular */
+    object-fit: cover;      /* Evita que la imagen se estire o aplaste */
+    border: 3px solid white;
+    margin: 0 auto 15px;
+    display: block;
+}
 
-/* Selector de Servicios (Carrusel) */
-.services-wrapper { display: flex; align-items: center; margin: 15px 0; }
+h1 { font-size: 1.6rem; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+
+/* 4. Selector de Servicios (Carrusel) */
+.services-section { width: 100%; margin-bottom: 20px; }
+.services-wrapper { display: flex; align-items: center; gap: 10px; }
 .services-container {
     display: flex;
-    overflow-x: auto;
+    overflow-x: auto;       /* Permite el scroll horizontal */
     scroll-behavior: smooth;
-    gap: 10px;
-    padding: 5px;
+    gap: 12px;
+    padding: 10px 5px;
+    scrollbar-width: none;  /* Oculta scroll en Firefox */
 }
-.services-container::-webkit-scrollbar { display: none; }
+.services-container::-webkit-scrollbar { display: none; } /* Oculta scroll en Chrome */
 
 .service-card {
-    min-width: 120px;
+    min-width: 130px;
     background: white;
     color: var(--primary);
-    padding: 10px;
-    border-radius: 10px;
+    padding: 12px;
+    border-radius: 12px;
     text-align: center;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: bold;
     cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
-.service-card.active { background: #00a8cc; color: white; }
+.service-card.active { background: #00a8cc; color: white; border: 2px solid white; }
 
-.nav-btn { background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer; }
+.nav-btn { background: none; border: none; color: white; font-size: 1.4rem; cursor: pointer; }
 
-/* Formulario e Inputs */
+/* 5. Formulario y Botones */
+#orderForm { width: 100%; }
 input, textarea {
     width: 100%;
-    padding: 12px;
-    margin: 6px 0;
-    border-radius: 8px;
+    padding: 14px;
+    margin: 8px 0;
+    border-radius: 10px;
     border: none;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Asegura que el padding no desborde el input */
+    font-size: 1rem;
 }
 
-.geo-btn { background: #fff; color: #333; border: none; padding: 8px; width: 100%; border-radius: 8px; cursor: pointer; font-size: 0.9rem; }
+.geo-btn { 
+    background: #f8f9fa; color: #333; border: none; padding: 12px; 
+    width: 100%; border-radius: 10px; cursor: pointer; font-weight: 600; margin-top: 5px;
+}
 
 .send-btn { 
-    background: var(--accent); color: white; width: 100%; padding: 15px; 
-    border: none; border-radius: 10px; font-weight: bold; margin-top: 10px; cursor: pointer;
+    background: var(--accent); color: white; width: 100%; padding: 16px; 
+    border: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem;
+    margin-top: 15px; cursor: pointer;
 }
 
-.edit-btn { background: transparent; color: #ccc; border: 1px solid #ccc; width: 100%; margin-top: 8px; padding: 8px; border-radius: 8px; }
+.edit-btn { background: transparent; color: #ddd; border: 1px solid #ddd; width: 100%; margin-top: 10px; padding: 10px; border-radius: 10px; }
 
-.catalog-link { text-align: center; margin-top: 20px; }
+/* 6. Footer y Enlaces */
+.catalog-link { text-align: center; margin-top: 25px; }
 .catalog-link a { color: #00ffcc; text-decoration: none; font-weight: bold; }
 
-footer { text-align: center; font-size: 0.75rem; margin-top: 20px; opacity: 0.8; }
+footer { text-align: center; font-size: 0.8rem; margin-top: 30px; opacity: 0.8; width: 100%; }
