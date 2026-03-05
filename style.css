@@ -1,114 +1,64 @@
-/* RESET GENERAL */
+/* style.css */
+
+/* 1. Reset para que todo encaje */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* 2. Colores de la Marca (Azul, Verde y Blanco) */
 :root {
-    --primary: #0056b3;
-    --accent: #25d366;
+    --primary-blue: #0056b3; /* Tomado del logo Óptica */
+    --accent-green: #25d366;  /* Tomado del logo Alianza/Bajo Cauca y WhatsApp */
+    --white: #ffffff;
 }
 
 body {
     font-family: 'Segoe UI', sans-serif;
+    /* Fondo con imagen de gafas y capa oscura para contraste */
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
                 url('https://images.unsplash.com/photo-1574258495973-f010dfbb5371?q=80&w=1000');
     background-size: cover;
-    background-attachment: fixed;
+    background-attachment: fixed; /* Ojo: en móviles esto puede no verse, lo arreglaremos luego */
     color: white;
     display: flex;
     justify-content: center;
     padding: 20px;
-    min-height: 100vh;
 }
 
-/* CONTENEDOR PRINCIPAL */
+/* 3. Contenedor Principal (Gris Transparente) */
 .app-container {
     width: 100%;
-    max-width: 420px;
-    background: rgba(45, 45, 45, 0.9); /* Fondo más sólido para que se vea bien */
+    max-width: 420px;       /* Ancho ideal para PC */
+    background: rgba(30, 30, 30, 0.9); /* Gris oscuro para contraste */
     backdrop-filter: blur(10px);
     border-radius: 25px;
     padding: 30px 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
-    align-items: center; /* ESTO CENTRA TODO */
+    align-items: center;    /* CENTRA TODO EL CONTENIDO */
 }
 
-/* HEADER Y LOGO (Aquí estaba el fallo) */
+/* 4. ARREGLO FINAL DEL LOGO RECTANGULAR */
 header {
     text-align: center;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .logo {
-    width: 100px !important;  /* Forzamos el tamaño */
-    height: 100px !important;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid white;
-    margin: 0 auto 10px auto; /* Centrado horizontal */
+    width: 180px;           /* Ancho rectangular fijo */
+    height: auto;           /* Alto automático proporcional */
+    max-width: 100%;        /* Evita que se salga en pantallas muy pequeñas */
+    border-radius: 10px;    /* Bordes ligeramente redondeados (opcional) */
+    border: 3px solid white; /* Borde blanco para que resalte sobre el gris */
     display: block;
+    margin: 0 auto 10px auto; /* Centrado horizontal */
 }
 
-h1 { font-size: 1.5rem; margin-bottom: 5px; }
+h1 { font-size: 1.6rem; color: var(--white); margin-bottom: 5px; text-transform: uppercase; }
+header p { font-size: 0.9rem; color: var(--white); opacity: 0.9; }
 
-/* SERVICIOS */
-.services-section { width: 100%; text-align: center; }
-.services-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    margin: 15px 0;
-}
-
-.services-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 10px;
-    padding: 10px 5px;
-    scrollbar-width: none;
-}
-.services-container::-webkit-scrollbar { display: none; }
-
-.service-card {
-    min-width: 130px;
-    background: white;
-    color: var(--primary);
-    padding: 12px;
-    border-radius: 12px;
-    font-weight: bold;
-    font-size: 0.9rem;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-.service-card.active { background: #00a8cc; color: white; }
-
-.nav-btn { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
-
-/* FORMULARIO */
-#orderForm { width: 100%; }
-input, textarea {
-    width: 100%;
-    padding: 14px;
-    margin: 8px 0;
-    border-radius: 10px;
-    border: none;
-    font-size: 1rem;
-}
-
-.geo-btn { 
-    background: #555; color: white; border: none; padding: 10px; 
-    width: 100%; border-radius: 10px; margin: 10px 0; cursor: pointer;
-}
-
-.send-btn { 
-    background: var(--accent); color: white; width: 100%; padding: 16px; 
-    border: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer;
-}
-
-footer { margin-top: 25px; font-size: 0.8rem; text-align: center; opacity: 0.7; }
+/* ... resto del CSS (Servicios, Formulario, Botones) ... */
