@@ -5,7 +5,7 @@ const assets = [
   './style.css',
   './script.js',
   './manifest.json',
-  './opticaalianzavisual.png'
+  './opticaalianzavisual.PNG'
 ];
 
 self.addEventListener('install', e => {
